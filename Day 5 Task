@@ -1,0 +1,200 @@
+/////////////MERN STACK Day 5 Task//////////////////
+//////////////1-Do the below programs in anonymous function & IIFE///////////
+/////////////////Print Odd numbers in an Array using Anonymous function////////////////
+ let arr = [2, 3, 4, 5, 6, 7,8, 9, 10, 11, 12];
+ let findOdd = function (num){
+    let oddNum = [];
+    for (let i=0; i<num.length; i++){
+        if(num[i] % 2 != 0){
+            oddNum.push(num[i])
+        }
+    }
+    return `Odd Numbers = ${oddNum}`;
+ }
+ console.log(findOdd(arr));
+
+ ///////Convert all the strings to title caps in a string array using IIFE function///////
+
+let arr2 = ["avengers", "hulk", "batman", "superman"];
+
+((arr)=>{
+    let titleCapsArr = [];
+    for (let j = 0; j<arr.length; j++){
+        newArr = arr[j].charAt(0).toLocaleUpperCase() + arr[j].slice(1);
+        titleCapsArr.push(newArr);
+    }
+    console.log(`Title Caps Array = ${titleCapsArr}`);
+})(arr2);
+
+///////Sum of all numbers in an array using IIFE Function/////////
+
+let arr3 = [25, 56, 12, 36, 9, 12];
+((num)=>{
+    let sum = 0;
+    for (let i=0; i<num.length; i++){
+        sum +=num[i];
+    }
+    console.log(`Sum = ${sum}`);
+})(arr3);
+
+////////Return all the prime numbers in an array using Anonymous function/////////
+
+let arr4 = [5, 2, 3, 4, 1, 7, 11, 15]
+let findPrime = function (num) {
+    let prime = []
+    num.forEach((value) => {
+        let factor =0;
+        for (let i=0; i<=value; i++){
+            if (value % i === 0){
+                factor++;
+            }
+        }
+        if (factor === 2){
+            prime.push(value);
+        }
+    })
+    console.log(`Prime Numbers =${prime}`);
+}
+findPrime(arr4);
+
+////////Return all the palindromes in an array using IIFE Function/////////
+
+let arr5 = ["car", "bike", "nan", "lol", "pop", "fan", "wow"];
+
+((value) =>{
+    let palindromes = [];
+    value.forEach((arr) =>{
+        reversedArr = arr.split("").reverse().join("");
+        if (arr === reversedArr){
+            palindromes.push(arr);
+        }
+    })
+    console.log(palindromes);
+})(arr5);
+/////////////////Return median of two sorted arrays of the same size using Anonymous function////////////////
+
+
+const mArr1 = [1, 2, 3, 5]
+const mArr2 = [4, 6, 7, 8, 9]
+
+const findMedian = function (arr1, arr2){
+    let totalArr = [...arr1, ...arr2].sort((a,b) => a-b);
+    let midPoint = Math.floor(totalArr.length/2)
+    console.log(midPoint)
+    console.log(totalArr);
+    if (midPoint % 2 == 0){
+        console.log(`Median is ${totalArr[midPoint]}`);
+    } else {
+        console.log(`Median is ${(totalArr[midPoint] + totalArr[midPoint-1])/2}`); 
+    }
+}
+findMedian(mArr1, mArr2);
+
+
+/////////////////Remove duplicates from an array using IIFE Function////////////////
+
+let arr6 = [2, 5, 6, 2, 1, 5, 7, 1];
+((num) => {
+    let sortedArr = [];
+    for (let i = 0; i<num.length; i++){
+        if(sortedArr.indexOf(num[i]) == -1){
+            sortedArr.push(num[i]);
+        }
+    }
+    console.log(sortedArr);
+})(arr6);
+
+/////////////////Rotate an array by k times using Anonymous function////////////////
+
+const normalArr = [4, 5, 6, 9, 2, 1];
+const noOfRotation = 3;
+
+const rotateArr = function (arr, k) {
+    if (arr.length <= k){
+        console.log("No of Rotation is more than or Equal to the lenght of an Array");
+    } if (arr.length > k){
+        for (let i =0; i < k; i++){
+            arr.unshift(arr.pop());
+        }
+        console.log(`Rotated Array is : ${arr}`);
+    }
+}
+rotateArr(normalArr, noOfRotation)
+
+
+///////////////2-Do the below programs in arrow functions//////////////////////
+/////////////////Print Odd numbers in an Array using Arrow Function////////////////
+
+let sampleArr = [1, 5 , 2, 6 , 9 , 3 , 7 , 5 , 4];
+let countOddNumber = inputVal => {
+    oddNum = [];
+    for (let i = 0; i<inputVal.length; i++){
+        if (inputVal[i] % 2 != 0){
+            oddNum.push(inputVal[i])
+        }
+    }
+    console.log(oddNum);
+}
+countOddNumber(sampleArr);
+
+///////Convert all the strings to title caps in a string array using Arrow Function///////
+
+let sampleArr2 = ["apple", "mango", "pineapple", "grapes"];
+let changeToUpperCase = arr => {
+    let titleCapsArr = [];
+    for (let j = 0; j<arr.length; j++){
+        newArr = arr[j].charAt(0).toLocaleUpperCase() + arr[j].slice(1);
+        titleCapsArr.push(newArr);
+    }
+    console.log(titleCapsArr);
+}
+changeToUpperCase(sampleArr2);
+
+///////Sum of all numbers in an array using Arrow Function/////////
+
+let sampleArr3 = [2, 6 , 12, 8 , 30];
+let countNum = numArr => {
+    sum = 0;
+    numArr.forEach(element => {
+        sum += element;
+    });
+    console.log(sum);
+}
+countNum(sampleArr3);
+
+////////Return all the prime numbers in an array using Arrow Function/////////
+
+let sampleArr4 = [1, 2, 4, 5, 6, 8, 9, 10, 7];
+
+let checkPrimeNum = val => {
+    let sortedArr = [];
+    val.forEach(num => {
+        let factor =0;
+        for (let i=0; i<=num; i++){
+            if (num % i == 0){
+                factor++;
+            }
+        }
+        if (factor===2){
+            sortedArr.push(num);
+        }
+    })
+    console.log(sortedArr);
+}
+checkPrimeNum(sampleArr4);
+
+////////Return all the palindromes in an array using Arrow Function/////////
+
+let sampleArr5 = ["vicky", "malayalam", "cycle", "mom", "racecar", "tiger"];
+let checkPalindrom = input => {
+    let palindroms = [];
+    input.forEach(value => {
+        reversedArr = value.split("").reverse().join("");
+        if (value === reversedArr){
+            palindroms.push(value);
+        }
+    })
+    console.log(palindroms);
+}
+checkPalindrom(sampleArr5);
+
